@@ -4,7 +4,7 @@ export default defineEventHandler(async (event) => {
   const query = getQuery(event);
 
   // Telegram требует верификации запроса на стороне сервера
-  const token = process.env.TELEGRAM_BOT_TOKEN;
+  const token = useRuntimeConfig().telegramBotToken;
   const authData = Object.keys(query)
     .filter((key) => key !== 'hash')
     .map((key) => `${key}=${query[key]}`)
