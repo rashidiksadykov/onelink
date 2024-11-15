@@ -3,29 +3,21 @@ import crypto from 'crypto';
 export default defineEventHandler((event) => {
   const query = getQuery(event);
 
-  // Указываем только основные поля
-  const requiredFields = ['id', 'first_name', 'last_name', 'username', 'auth_date', 'hash'];
-  const filteredQuery = Object.fromEntries(
-    Object.entries(query).filter(([key]) => requiredFields.includes(key))
-  );
-
-  const token = useRuntimeConfig().telegramBotToken;
-  const authData = Object.keys(filteredQuery)
-    .filter((key) => key !== 'hash')
-    .map((key) => `${key}=${filteredQuery[key]}`)
+  // Убираем photo_url для проверки hash
+  const authData = Object.keys(query)
+    .filter((key) => key !== 'hash' && key !== 'photo_url')
+    .map((key) => `${key}=${query[key]}`)
     .sort()
     .join('\n');
 
+  const token = useRuntimeConfig().telegramBotToken;
   const secretKey = crypto.createHash('sha256').update(token).digest();
-  const hash = crypto
-    .createHmac('sha256', secretKey)
-    .update(authData)
-    .digest('hex');
+  const hash = crypto.createHmac('sha256', secretKey).update(authData).digest('hex');
 
-  if (hash !== filteredQuery.hash) {
+  if (hash !== query.hash) {
     return { statusCode: 403, body: { error: 'Invalid data' } };
   }
 
-  // Вернем только базовые данные для теста
-  return { user: filteredQuery };
+  // Если проверка пройдена, возвращаем все данные, включая photo_url
+  return { user: query };
 });
