@@ -9,7 +9,13 @@
 export default { 
   methods: {
     async commitToGitHub() {
-      const token = process.env.GITHUB_TOKEN; // Используем переменную окружения
+      
+      //const token = process.env.GITHUB_TOKEN; // Используем переменную окружения
+
+      const config = useRuntimeConfig();
+      const token = config.githubToken; // Получение токена из runtimeConfig
+
+
       const owner = "rashidiksadykov"; // Имя пользователя GitHub
       const repo = "MyVCard"; // Имя репозитория на GitHub
       const path = "file.txt"; // Путь к файлу в репозитории
@@ -62,6 +68,10 @@ export default {
         console.error("Ошибка:", error);
         alert(`Ошибка при коммите: ${error.message}`);
       }
+
+      console.log("GitHub Token:", process.env.GITHUB_TOKEN);
+
+
     },
   },
 };
