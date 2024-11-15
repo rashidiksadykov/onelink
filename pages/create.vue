@@ -10,7 +10,9 @@
 export default {
   methods: {
     async commitToGitHub() {
-      const token = "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"; // Ваш GitHub токен
+
+      const token = process.env.GITHUB_TOKEN; // Получение токена из окружения
+
       const owner = "rashidiksadykov"; // Ваше имя пользователя
       const repo = "MyVCard"; // Ваш репозиторий
       const path = "server/user/files.txt"; // Файл, который хотите создать или обновить
