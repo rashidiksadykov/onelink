@@ -4,6 +4,10 @@ export default defineEventHandler(async (event) => {
   const query = getQuery(event);
   const config = useRuntimeConfig();
 
+  
+  console.log("Loaded Telegram Bot Token:", config.telegramBotToken);
+  return { message: "Testing Cloudflare environment variable access" };
+
   console.log("TELEGRAM_BOT_TOKEN:", config.telegramBotToken); // Проверка токена
 
   // Проверка наличия токена
