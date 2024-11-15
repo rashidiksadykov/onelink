@@ -1,10 +1,12 @@
 <template>
   <div>
-    <h1>Авторизация через Telegram</h1>
-    <TelegramAuth />
+    <TelegramAuth @auth="handleAuth" />
   </div>
 </template>
 
-<script setup>
-import TelegramAuth from '~/components/TelegramAuth.vue';
+<script setup lang="ts">
+const handleAuth = (user) => {
+  console.log('User authenticated:', user);
+  // Обработка данных пользователя
+}
 </script>
