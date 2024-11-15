@@ -9,7 +9,10 @@ export default defineNuxtConfig({
 
   compatibilityDate: '2024-11-15',
   devtools: { enabled: true },
-  modules: ['nuxt-telegram-auth'],
+  modules: ['nuxt-telegram-auth'
+
+    
+  ],
 
   
 
