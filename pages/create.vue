@@ -11,7 +11,7 @@ export default {
   methods: {
     async commitToGitHub() {
 
-      const token = process.env.GITHUB_TOKEN; // Получение токена из окружения
+      const githubToken = process.env.GITHUB_TOKEN; // Получение токена из окружения
 
       const owner = "rashidiksadykov"; // Ваше имя пользователя
       const repo = "MyVCard"; // Ваш репозиторий
@@ -26,7 +26,7 @@ export default {
           `https://api.github.com/repos/${owner}/${repo}/contents/${path}`,
           {
             headers: {
-              Authorization: `Bearer ${token}`,
+              Authorization: `Bearer ${githubToken}`,
             },
           }
         );
