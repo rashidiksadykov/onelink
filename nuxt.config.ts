@@ -4,7 +4,25 @@ export default defineNuxtConfig({
     TELEGRAM_TOKEN: process.env.TELEGRAM_BOT_TOKEN
   },
 
-  compatibilityDate: '2024-04-03',
+  compatibilityDate: '2024-11-15',
   devtools: { enabled: true },
-  modules: ['nuxt-telegram-auth']
+  modules: ['nuxt-telegram-auth'],
+
+  
+
+  css: ['~/assets/css/tailwind.css'],
+  postcss: {
+    plugins: {
+      tailwindcss: {},
+      autoprefixer: {},
+    },
+  },
+
 })
+
+
+
+
+
+
+
