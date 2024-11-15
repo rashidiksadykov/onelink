@@ -3,8 +3,8 @@ export default defineNuxtConfig({
   runtimeConfig: {
     TELEGRAM_TOKEN: process.env.TELEGRAM_BOT_TOKEN,
     
-    //githubToken: process.env.GITHUB_TOKEN || "",
-    githubToken: "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",
+    githubToken: process.env.GITHUB_TOKEN || "",
+    //githubToken: "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",
   },
 
   compatibilityDate: '2024-11-15',
