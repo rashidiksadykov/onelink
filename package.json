@@ -12,6 +12,7 @@
   "dependencies": {
     "crypto": "^1.0.1",
     "nuxt": "^3.14.159",
+    "nuxt-telegram-auth": "^1.2.0",
     "vue": "latest",
     "vue-router": "latest"
   }
